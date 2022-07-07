@@ -1,0 +1,14 @@
+# executable file
+fdf
+a.out
+
+# static library
+*.a
+
+# object files
+*.o
+/obj
+
+# editor configuration file
+compile_commands.json
+.cache/
