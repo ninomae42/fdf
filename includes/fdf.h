@@ -9,11 +9,21 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/includes/libft.h"
 
+// type for point
+typedef struct s_point
+{
+	double	x;
+	double	y;
+	double	z;
+	int		color;
+}	t_point;
+
 // type for map
 typedef struct s_map
 {
 	size_t	height;
 	size_t	width;
+	t_point	**map;
 }	t_map;
 
 // init.c
