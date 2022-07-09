@@ -2,7 +2,13 @@ NAME := fdf
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./obj
-SRCS := main.c
+SRCS := main.c \
+		hex_to_int.c \
+		init.c \
+		map_loader.c \
+		map_utils.c \
+		utils.c \
+
 OBJS := $(SRCS:.c=.o)
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
@@ -28,6 +34,10 @@ CLAGS := -Wall -Wextra -Werror -g -MMD -MP
 MAKE := make
 RM := rm -rf
 
+ifeq ($(MAKECMDGOALS), sanitize)
+	CFLAGS += -fsanitize=address
+endif
+
 all: $(NAME)
 
 $(OBJS_DIR)/%o: $(SRCS_DIR)/%c
@@ -51,6 +61,8 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+sanitize: re
 
 run: all
 	./fdf
