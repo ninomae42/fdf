@@ -24,22 +24,57 @@ void	draw_line(t_img *img, t_point *p1, t_point *p2)
 	double	d;
 	double	l;
 
-	dx = p2->x - p1->x;
-	dy = p2->y - p1->y;
+	dx = 50 * (p2->x - p1->x);
+	dy = 50 * (p2->y - p1->y);
 	theta = atan2(dy, dx);
 	d = sqrt(dx * dx + dy * dy);
 	l = 0;
 	while (l < d)
 	{
 		my_mlx_pixel_put(img,
-			p1->x + l * cos(theta),
-			p1->y + l * sin(theta),
-			calc_color(l, d, p1->color, p2->color));
+			p1->x * 50 + l * cos(theta),
+			p1->y * 50 + l * sin(theta),
+			0x00FFFFFF);
 		l++;
 	}
 }
 
-void	window_init(void)
+void	connect_other_points(t_img *img, t_map *map_info, size_t index_x, size_t index_y)
+{
+	t_point	**map;
+
+	map = map_info->map;
+	if (index_y + 1 < map_info->height)
+		draw_line(img, &map[index_y][index_x], &map[index_y + 1][index_x]);
+	if (index_x + 1 < map_info->width)
+		draw_line(img, &map[index_y][index_x], &map[index_y][index_x + 1]);
+	if (0 < index_y)
+		draw_line(img, &map[index_y - 1][index_x], &map[index_y][index_x]);
+	if (0 < index_x)
+		draw_line(img, &map[index_y][index_x - 1], &map[index_y][index_x]);
+}
+
+void	print_grid(t_map *map_info, t_mlx *mlx, t_img *img)
+{
+	size_t	y;
+	size_t	x;
+	t_point	**map;
+
+	map = map_info->map;
+	y = 0;
+	while (y < map_info->height)
+	{
+		x = 0;
+		while (x < map_info->width)
+		{
+			connect_other_points(img, map_info, x, y);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	window_init(t_map *map_info)
 {
 	t_mlx	mlx;
 	t_img	img;
@@ -55,22 +90,27 @@ void	window_init(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 
-	p1.x = 100;
-	p1.y = 100;
-	p1.color = 0x00FFFFFF;
-	p2.x = 200;
-	p2.y = 100;
-	p1.color = 0x0000FF00;
-	draw_line(&img, &p1, &p2);
+	print_grid(map_info, &mlx, &img);
 
-	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 100, 100);
 	mlx_loop(mlx.mlx);
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	window_init();
+	t_map	*map_info;
+
+	map_info = init(argc, argv);
+	load_map(argv[1], map_info);
+	//print_points(map_info);
+	window_init(map_info);
+	exit(EXIT_SUCCESS);
 }
+
+//int	main(void)
+//{
+//	window_init();
+//}
 
 //int	main(int argc, char *argv[])
 //{
