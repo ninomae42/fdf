@@ -8,6 +8,7 @@ SRCS := main.c \
 		map_loader.c \
 		map_utils.c \
 		utils.c \
+		window_utils.c \
 
 OBJS := $(SRCS:.c=.o)
 
