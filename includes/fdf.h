@@ -66,10 +66,13 @@ void	print_points(t_map *map_info);
 char	**ft_split_or_exit(const char *s, char c);
 void	free_split(char **ptr);
 size_t	split_len(char **split);
+void	*ft_malloc_or_exit(size_t size);
+void	*ft_calloc_or_exit(size_t count, size_t size);
 
 // window_utils.c
 int		close_window_with_esc(int keycode, t_mlx *mlx);
 int		close_window_with_button(t_mlx *mlx);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 // hex_to_int.c
 int		hex_to_int(const char *hex);
