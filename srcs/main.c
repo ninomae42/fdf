@@ -8,6 +8,14 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	calc_color(double l, double d, int color1, int color2)
+{
+	double	ret;
+
+	ret = (color2 - color1) * l / d;
+	return (ret);
+}
+
 void	draw_line(t_img *img, t_point *p1, t_point *p2)
 {
 	double	dx;
@@ -26,7 +34,7 @@ void	draw_line(t_img *img, t_point *p1, t_point *p2)
 		my_mlx_pixel_put(img,
 			p1->x + l * cos(theta),
 			p1->y + l * sin(theta),
-			0x00FF0000);
+			calc_color(l, d, p1->color, p2->color));
 		l++;
 	}
 }
@@ -49,8 +57,10 @@ void	window_init(void)
 
 	p1.x = 100;
 	p1.y = 100;
+	p1.color = 0x00FFFFFF;
 	p2.x = 200;
 	p2.y = 100;
+	p1.color = 0x0000FF00;
 	draw_line(&img, &p1, &p2);
 
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
