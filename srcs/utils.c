@@ -42,3 +42,33 @@ size_t	split_len(char **split)
 		len++;
 	return (len);
 }
+
+// Wrapper function of malloc. If allocation is fail,
+// then exit with status EXIT_FAILURE
+void	*ft_malloc_or_exit(size_t size)
+{
+	void	*ret;
+
+	ret = malloc(size);
+	if (ret == NULL)
+	{
+		perror("fdf");
+		exit(EXIT_FAILURE);
+	}
+	return (ret);
+}
+
+// Wrapper function of ft_calloc. If allocation is fail,
+// then exit with status EXIT_FAILURE
+void	*ft_calloc_or_exit(size_t count, size_t size)
+{
+	void	*ret;
+
+	ret = ft_calloc(count, size);
+	if (ret == NULL)
+	{
+		perror("fdf");
+		exit(EXIT_FAILURE);
+	}
+	return (ret);
+}
