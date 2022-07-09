@@ -2,11 +2,9 @@
 
 int	main(int argc, char *argv[])
 {
-	int	fd;
+	t_map	*map_info;
 
-	validate_argument(argc, argv);
-	fd = open_file_by_name(argv[1]);
-	close(fd);
+	map_info = init(argc, argv);
 }
 
 //__attribute__((destructor)) static void destructor()

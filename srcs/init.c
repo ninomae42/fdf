@@ -28,3 +28,14 @@ int	open_file_by_name(const char *file_name)
 	}
 	return (fd);
 }
+
+// initialize map information.
+// Validate command line argument and find map width and height.
+t_map	*init(int argc, char *argv[])
+{
+	t_map	*map_info;
+
+	validate_argument(argc, argv);
+	map_info = init_map_info(argv[1]);
+	return (map_info);
+}
