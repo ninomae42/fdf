@@ -1,20 +1,20 @@
 #include "../includes/fdf.h"
-#include <stdio.h>
-#include <errno.h>
-#include <limits.h>
 
 #define HEX_BASE "0123456789abcdef"
 #define BASE_LEN 16
 
 // Convert upper-cased hex value to lower-cased hex value
-char	*convert_to_lower_hex(const char *hex)
+static char	*convert_to_lower_hex(const char *hex)
 {
 	char	*ret;
 	size_t	i;
 
 	ret = ft_strdup(hex);
 	if (ret == NULL)
+	{
+		perror("fdf");
 		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (ret[i] != '\0')
 	{
@@ -25,7 +25,7 @@ char	*convert_to_lower_hex(const char *hex)
 }
 
 // find the index of 'c' in string 's'
-size_t	index_at(const char *s, char c)
+static size_t	index_at(const char *s, char c)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ size_t	index_at(const char *s, char c)
 }
 
 // Overflow detection.
-int	is_overflow(int current, char next_char)
+static int	is_overflow(int current, char next_char)
 {
 	int	next_digit;
 
@@ -53,31 +53,48 @@ int	is_overflow(int current, char next_char)
 	return (0);
 }
 
-// Convert hex string to signed int value.
-int	hex_to_int(const char *hex)
+static int	do_conversion(char *hex_lower, size_t *index, int *is_err)
 {
-	int		ret;
 	size_t	i;
-	char	*hex_lower;
+	int		ret;
 
 	ret = 0;
-	i = 0;
-	hex_lower = convert_to_lower_hex(hex);
-	i += 2;
+	i = *index;
 	while (hex_lower[i] != '\0' && ft_strchr(HEX_BASE, hex_lower[i]))
 	{
 		if (is_overflow(ret, hex_lower[i]))
 		{
+			*is_err = 1;
 			errno = ERANGE;
 			return (0);
 		}
 		ret = ret * BASE_LEN + index_at(HEX_BASE, hex_lower[i]);
 		i++;
 	}
-	if (i != ft_strlen(hex))
+	*index = i;
+	return (ret);
+}
+
+// Convert hex string to signed int value.
+int	hex_to_int(const char *hex)
+{
+	int		ret;
+	size_t	i;
+	char	*hex_lower;
+	int		is_err;
+
+	hex_lower = convert_to_lower_hex(hex);
+	i = 2;
+	is_err = 0;
+	ret = do_conversion(hex_lower, &i, &is_err);
+	if (is_err == 1 || i != ft_strlen(hex))
 	{
-		errno = EINVAL;
-		return (0);
+		if (errno != ERANGE)
+			errno = EINVAL;
+		perror("fdf");
+		free(hex_lower);
+		exit(EXIT_FAILURE);
 	}
+	free(hex_lower);
 	return (ret);
 }

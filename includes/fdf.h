@@ -1,6 +1,8 @@
 #ifndef FDF_H
 # define FDF_H
+# include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
