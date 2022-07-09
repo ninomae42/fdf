@@ -1,5 +1,4 @@
 #include "../includes/fdf.h"
-#include <stdlib.h>
 
 // find map width.
 static size_t	get_map_width(char **split)
@@ -33,6 +32,31 @@ static void	set_map_height_and_width(int fd, size_t *width, size_t *height)
 	}
 }
 
+static void	allocate_map(t_map *map_info)
+{
+	t_point	**map;
+	size_t	i;
+
+	map = (t_point **)ft_calloc(map_info->height, sizeof(t_point *));
+	if (map == NULL)
+	{
+		perror("fdf");
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < map_info->height)
+	{
+		map[i] = (t_point *)ft_calloc(map_info->width, sizeof(t_point));
+		if (map[i] == NULL)
+		{
+			perror("fdf");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	map_info->map = map;
+}
+
 // Allocate new t_map struct and set map width and height.
 t_map	*init_map_info(char *file_name)
 {
@@ -47,6 +71,7 @@ t_map	*init_map_info(char *file_name)
 	}
 	fd = open_file_by_name(file_name);
 	set_map_height_and_width(fd, &(map_info->width), &(map_info->height));
+	allocate_map(map_info);
 	close(fd);
 	return (map_info);
 }

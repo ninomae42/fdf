@@ -2,7 +2,12 @@ NAME := fdf
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./obj
-SRCS := main.c
+SRCS := main.c \
+		init.c \
+		map_utils.c \
+		utils.c \
+		hex_to_int.c
+
 OBJS := $(SRCS:.c=.o)
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
