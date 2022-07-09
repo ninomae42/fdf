@@ -36,6 +36,10 @@ t_map	*init(int argc, char *argv[]);
 // map_utils.c
 t_map	*init_map_info(char *file_name);
 
+// map_loader.c
+void	load_map(char *file_name, t_map *map_info);
+void	print_points(t_map *map_info);
+
 // utils.c
 char	**ft_split_or_exit(const char *s, char c);
 void	free_split(char **ptr);
