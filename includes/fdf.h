@@ -40,6 +40,16 @@ typedef struct s_mlx
 	void	*win;
 }	t_mlx;
 
+// type for mlx image struct
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
 // init.c
 void	validate_argument(int argc, char *argv[]);
 int		open_file_by_name(const char *file_name);

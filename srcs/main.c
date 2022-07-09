@@ -1,14 +1,5 @@
 #include "../includes/fdf.h"
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
-
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
@@ -17,10 +8,35 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	draw_line(t_img *img, t_point *p1, t_point *p2)
+{
+	double	dx;
+	double	dy;
+	double	theta;
+	double	d;
+	double	l;
+
+	dx = p2->x - p1->x;
+	dy = p2->y - p1->y;
+	theta = atan2(dy, dx);
+	d = sqrt(dx * dx + dy * dy);
+	l = 0;
+	while (l < d)
+	{
+		my_mlx_pixel_put(img,
+			p1->x + l * cos(theta),
+			p1->y + l * sin(theta),
+			0x00FF0000);
+		l++;
+	}
+}
+
 void	window_init(void)
 {
 	t_mlx	mlx;
 	t_img	img;
+	t_point	p1;
+	t_point	p2;
 
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 1200, 800, "fdf");
@@ -30,7 +46,13 @@ void	window_init(void)
 	img.img = mlx_new_image(mlx.mlx, 1200, 800);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 100, 100, 0x00FF0000);
+
+	p1.x = 100;
+	p1.y = 100;
+	p2.x = 200;
+	p2.y = 100;
+	draw_line(&img, &p1, &p2);
+
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }
