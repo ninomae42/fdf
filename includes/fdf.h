@@ -69,6 +69,10 @@ size_t	split_len(char **split);
 void	*ft_malloc_or_exit(size_t size);
 void	*ft_calloc_or_exit(size_t count, size_t size);
 
+// draw_utils.c
+double	calculate_scale(t_map *map_info);
+int		calc_color(double l, double d, int color1, int color2);
+
 // window_utils.c
 int		close_window_with_esc(int keycode, t_mlx *mlx);
 int		close_window_with_button(t_mlx *mlx);
