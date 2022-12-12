@@ -2,6 +2,8 @@ NAME := fdf
 
 # source file settings
 SRCS := main.c \
+		cmdline_arguments.c \
+		utils.c \
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./objs
@@ -16,9 +18,9 @@ LIBFT := $(addprefix $(LIBFT_DIR)/, $(LIBFT))
 
 MINILIBX := libmlx_Darwin.a
 MINILIBX_DIR := ./minilibx-linux
-LIBFT := $(addprefix $(MINILIBX_DIR)/, $(MINILIBX))
+MINILIBX := $(addprefix $(MINILIBX_DIR)/, $(MINILIBX))
 
-LDFLAGS := -L/usr/X11R6/lib -lX11 -lXext -L$(MINILIBX_DIR) -lmlx
+LDFLAGS := -L/usr/X11R6/lib -lX11 -lXext -L$(MINILIBX_DIR) -lmlx -L$(LIBFT_DIR) -lft
 
 # include file settings
 INC_DIR := ./includes $(addprefix $(LIBFT_DIR)/, includes) $(MINILIBX_DIR)
