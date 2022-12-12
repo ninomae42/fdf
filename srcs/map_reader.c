@@ -1,7 +1,7 @@
 #include "fdf.h"
 
-static void	read_point(char *point, 
-	size_t x, size_t y, t_coordinate **coordinates);
+static void	read_point(char *point,
+				size_t x, size_t y, t_coordinate **coordinates);
 static void	read_row(char *row, size_t y, t_map *map);
 
 void	read_map(char *file_name, t_info *info)
@@ -20,7 +20,6 @@ void	read_map(char *file_name, t_info *info)
 		row = NULL;
 		y++;
 		row = get_next_line(fd);
-
 	}
 	if (info->map->height != y)
 	{
@@ -50,7 +49,7 @@ static void	read_row(char *row, size_t y, t_map *map)
 	}
 }
 
-static void	read_point(char *point, 
+static void	read_point(char *point,
 	size_t x, size_t y, t_coordinate **coordinates)
 {
 	size_t	i;

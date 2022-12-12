@@ -43,12 +43,12 @@ static void	allocate_map_coordinates(t_info *info)
 	size_t	i;
 
 	info->map->coordinates = (t_coordinate **)ft_malloc_exit(
-		sizeof(t_coordinate *) * info->map->height);
+			sizeof(t_coordinate *) * info->map->height);
 	i = 0;
 	while (i < info->map->height)
 	{
 		info->map->coordinates[i] = (t_coordinate *)ft_malloc_exit(
-			sizeof(t_coordinate) * info->map->width);
+				sizeof(t_coordinate) * info->map->width);
 		i++;
 	}
 }

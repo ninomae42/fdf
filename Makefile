@@ -63,4 +63,9 @@ $(MINILIBX):
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
+norm:
+	-@norminette includes/ | grep -v "INVALID_HEADER"
+	-@norminette srcs/ | grep -v "INVALID_HEADER"
+# -@norminette libft/ | grep -v "INVALID_HEADER"
+
 .PHONY: all clean fclean re
