@@ -9,6 +9,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # define USAGE "[Usage] ./fdf [map_filename].fdf"
 # define ERR_ARGC "[Error] Invalid argument count"
@@ -33,9 +35,23 @@ typedef struct s_map
 	t_coordinate	**coordinates;
 }	t_map;
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_info
 {
 	t_map	*map;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		win_width;
+	int		win_height;
+	t_img	*img;
 }	t_info;
 
 // cmdline_arguments.c
@@ -47,6 +63,15 @@ void	deallocate_map(t_map *map);
 
 // map_reader.c
 void	read_map(char *file_name, t_info *info);
+
+// mlx_init.c
+void	init_mlx(t_info *info);
+void	deallocate_mlx(t_info *info);
+
+// mlx_hooks.c
+int		hook_render(void *param);
+int		hook_button(int keysym, void *param);
+int		hook_close_button(void *param);
 
 // hex_to_int.c
 int		hex_to_int(const char *hex);

@@ -5,6 +5,8 @@ SRCS := main.c \
 		cmdline_arguments.c \
 		map_init.c \
 		map_reader.c \
+		mlx_init.c \
+		mlx_hooks.c \
 		utils.c \
 		split_utils.c \
 		hex_to_int.c \
@@ -27,7 +29,7 @@ MINILIBX := $(addprefix $(MINILIBX_DIR)/, $(MINILIBX))
 LDFLAGS := -L/usr/X11R6/lib -lX11 -lXext -L$(MINILIBX_DIR) -lmlx -L$(LIBFT_DIR) -lft
 
 # include file settings
-INC_DIR := ./includes $(addprefix $(LIBFT_DIR)/, includes) $(MINILIBX_DIR)
+INC_DIR := ./includes $(addprefix $(LIBFT_DIR)/, includes) $(MINILIBX_DIR) /usr/X11R6/include
 INCLUDES := $(addprefix -I, $(INC_DIR))
 
 # Command settings
