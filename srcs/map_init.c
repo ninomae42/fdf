@@ -77,3 +77,17 @@ static int	get_map_height_and_width(int fd, size_t *height, size_t *width)
 	}
 	return (0);
 }
+
+void	deallocate_map(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		free(map->coordinates[i]);
+		i++;
+	}
+	free(map->coordinates);
+	free(map);
+}

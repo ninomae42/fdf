@@ -43,6 +43,7 @@ bool	is_cmdline_argument_valid(int argc, char **argv);
 
 // map_init.c
 void	initialize_map(t_info *info, char *file_name);
+void	deallocate_map(t_map *map);
 
 // map_reader.c
 void	read_map(char *file_name, t_info *info);
