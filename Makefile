@@ -26,7 +26,12 @@ MINILIBX := libmlx_Darwin.a
 MINILIBX_DIR := ./minilibx-linux
 MINILIBX := $(addprefix $(MINILIBX_DIR)/, $(MINILIBX))
 
-LDFLAGS := -L/usr/X11R6/lib -lX11 -lXext -L$(MINILIBX_DIR) -lmlx -L$(LIBFT_DIR) -lft
+LIB_DIR := /usr/X11R6/lib $(MINILIBX_DIR) $(LIBFT_DIR)
+LIB_DIR := $(addprefix -L, $(LIB_DIR))
+
+LIBS := X11 Xext mlx ft
+LIBS := $(addprefix -l, $(LIBS))
+LDFLAGS := $(LIB_DIR) $(LIBS)
 
 # include file settings
 INC_DIR := ./includes $(addprefix $(LIBFT_DIR)/, includes) $(MINILIBX_DIR) /usr/X11R6/include
