@@ -1,36 +1,5 @@
 #include "fdf.h"
 
-void	print_map(t_map *map)
-{
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			printf("i: %zu, j:%zu, ", x, y);
-			printf("x: %d, y: %d, z: %d, color: %d\n",
-				map->coordinates[y][x].x,
-				map->coordinates[y][x].y,
-				map->coordinates[y][x].z,
-				map->coordinates[y][x].color);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	img_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dest;
-
-	dest = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(int *)dest = color;
-}
-
 int	main(void)
 {
 	t_info	*info;

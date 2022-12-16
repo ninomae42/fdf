@@ -42,7 +42,18 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		win_width;
+	int		win_height;
 }	t_img;
+
+typedef struct s_plot
+{
+	int		dx;
+	int		dy;
+	int		steps;
+	double	x_inc;
+	double	y_inc;
+}	t_plot;
 
 typedef struct s_info
 {
@@ -80,6 +91,7 @@ int		hex_to_int(const char *hex);
 void	ft_puterr(char *err_msg);
 void	*ft_malloc_exit(size_t size);
 int		open_file(const char *file_name);
+void	print_map(t_map *map);
 
 // split_utils.c
 char	**ft_split_or_exit(const char *s, char c);

@@ -10,6 +10,7 @@ SRCS := main.c \
 		utils.c \
 		split_utils.c \
 		hex_to_int.c \
+		draw_utils.c \
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./objs

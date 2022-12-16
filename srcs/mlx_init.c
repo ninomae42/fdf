@@ -8,9 +8,8 @@ void	init_mlx(t_info *info)
 	info->mlx_ptr = mlx_init();
 	if (info->mlx_ptr == NULL)
 		exit(EXIT_FAILURE);
-	mlx_get_screen_size(info->mlx_ptr, &info->win_width, &info->win_height);
-	info->win_height = info->win_height / 3;
-	info->win_width = info->win_width / 4;
+	info->win_height = 1080 / 2;
+	info->win_width = 1920 / 2;
 	info->win_ptr = mlx_new_window(info->mlx_ptr,
 			info->win_width, info->win_height, "fdf");
 	if (info->win_ptr == NULL)
@@ -35,6 +34,8 @@ static void	init_mlx_img(t_info *info)
 	info->img = (t_img *)ft_malloc_exit(sizeof(t_img));
 	info->img->mlx_img = mlx_new_image(info->mlx_ptr, info->win_width, info->win_height);
 	info->img->addr = mlx_get_data_addr(info->img->mlx_img, &info->img->bpp, &info->img->line_len, &info->img->endian);
+	info->img->win_width = info->win_width;
+	info->img->win_height = info->win_height;
 }
 
 static void	register_hooks(t_info *info)
