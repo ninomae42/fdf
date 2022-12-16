@@ -84,6 +84,9 @@ int		hook_render(void *param);
 int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
 
+// draw_utils.c
+void	draw_line(t_img *img, int x0, int y0, int x1, int y1);
+
 // hex_to_int.c
 int		hex_to_int(const char *hex);
 

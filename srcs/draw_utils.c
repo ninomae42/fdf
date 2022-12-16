@@ -1,5 +1,8 @@
 #include "fdf.h"
 
+static int	ft_abs(int n);
+static void	img_pixel_put(t_img *img, int x, int y, int color);
+
 void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
 {
 	t_plot	plot;
@@ -9,10 +12,10 @@ void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
 
 	plot.dx = x1 - x0;
 	plot.dy = y1 - y0;
-	if (abs(plot.dx) > abs(plot.dy))
-		plot.steps = abs(plot.dx);
+	if (ft_abs(plot.dx) > ft_abs(plot.dy))
+		plot.steps = ft_abs(plot.dx);
 	else
-		plot.steps = abs(plot.dy);
+		plot.steps = ft_abs(plot.dy);
 	plot.x_inc = plot.dx / (double)plot.steps;
 	plot.y_inc = plot.dy / (double)plot.steps;
 	i = 0;
@@ -27,7 +30,7 @@ void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
 	}
 }
 
-static int	abs(int n)
+static int	ft_abs(int n)
 {
 	if (0 < n)
 		return (n);
