@@ -20,19 +20,19 @@
 
 # define ERR_MEM "[Error] Unable to allocate memory"
 
-typedef struct s_coordinate
+typedef struct s_point
 {
 	int	x;
 	int	y;
 	int	z;
 	int	color;
-}	t_coordinate;
+}	t_point;
 
 typedef struct s_map
 {
-	size_t			width;
-	size_t			height;
-	t_coordinate	**coordinates;
+	size_t	width;
+	size_t	height;
+	t_point	**points;
 }	t_map;
 
 typedef struct s_img

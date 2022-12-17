@@ -42,13 +42,13 @@ static void	allocate_map_coordinates(t_info *info)
 {
 	size_t	i;
 
-	info->map->coordinates = (t_coordinate **)ft_malloc_exit(
-			sizeof(t_coordinate *) * info->map->height);
+	info->map->points = (t_point **)ft_malloc_exit(
+			sizeof(t_point *) * info->map->height);
 	i = 0;
 	while (i < info->map->height)
 	{
-		info->map->coordinates[i] = (t_coordinate *)ft_malloc_exit(
-				sizeof(t_coordinate) * info->map->width);
+		info->map->points[i] = (t_point *)ft_malloc_exit(
+				sizeof(t_point) * info->map->width);
 		i++;
 	}
 }
@@ -85,9 +85,9 @@ void	deallocate_map(t_map *map)
 	i = 0;
 	while (i < map->height)
 	{
-		free(map->coordinates[i]);
+		free(map->points[i]);
 		i++;
 	}
-	free(map->coordinates);
+	free(map->points);
 	free(map);
 }

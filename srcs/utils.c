@@ -46,10 +46,10 @@ void	print_map(t_map *map)
 		{
 			printf("i: %zu, j:%zu, ", x, y);
 			printf("x: %d, y: %d, z: %d, color: %d\n",
-				map->coordinates[y][x].x,
-				map->coordinates[y][x].y,
-				map->coordinates[y][x].z,
-				map->coordinates[y][x].color);
+				map->points[y][x].x,
+				map->points[y][x].y,
+				map->points[y][x].z,
+				map->points[y][x].color);
 			x++;
 		}
 		y++;
