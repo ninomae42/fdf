@@ -3,15 +3,15 @@
 static int	ft_abs(int n);
 static void	img_pixel_put(t_img *img, int x, int y, int color);
 
-void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
+void	draw_line(t_img *img, t_point p1, t_point p2)
 {
 	t_plot	plot;
 	int		i;
 	double	x;
 	double	y;
 
-	plot.dx = x1 - x0;
-	plot.dy = y1 - y0;
+	plot.dx = p2.x - p1.x;
+	plot.dy = p2.y - p1.y;
 	if (ft_abs(plot.dx) > ft_abs(plot.dy))
 		plot.steps = ft_abs(plot.dx);
 	else
@@ -19,8 +19,8 @@ void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
 	plot.x_inc = plot.dx / (double)plot.steps;
 	plot.y_inc = plot.dy / (double)plot.steps;
 	i = 0;
-	x = x0;
-	y = y0;
+	x = p1.x;
+	y = p1.y;
 	while (i < plot.steps)
 	{
 		img_pixel_put(img, x, y, 0xFFFFFF);
@@ -29,6 +29,27 @@ void	draw_line(t_img *img, int x0, int y0, int x1, int y1)
 		i++;
 	}
 }
+
+void	clear_window(t_info *info)
+{
+	size_t	x;
+	size_t	y;
+	t_img	*img;
+
+	img = info->img;
+	y = 0; 
+	while (y < (size_t)info->win_height)
+	{
+		x = 0;
+		while (x < (size_t)info->win_width)
+		{
+			img_pixel_put(img, x, y, 0x00000000);
+			x++;
+		}
+		y++;
+	}
+}
+
 
 static int	ft_abs(int n)
 {

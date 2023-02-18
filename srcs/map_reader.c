@@ -61,9 +61,9 @@ static void	read_point(char *point,
 		points[y][x].color = hex_to_int(point_split[1]);
 	else
 		points[y][x].color = -1;
-	points[y][x].z = ft_atoi(point_split[0]);
-	points[y][x].y = (int)y;
-	points[y][x].x = (int)x;
+	points[y][x].z = (double)ft_atoi(point_split[0]);
+	points[y][x].y = (double)y;
+	points[y][x].x = (double)x;
 	ft_split_free(point_split);
 	i++;
 }

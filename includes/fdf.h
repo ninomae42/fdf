@@ -5,6 +5,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,9 +23,9 @@
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 	int	color;
 }	t_point;
 
@@ -85,7 +86,7 @@ int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
 
 // draw_utils.c
-void	draw_line(t_img *img, int x0, int y0, int x1, int y1);
+void	draw_line(t_img *img, t_point p1, t_point p2);
 
 // hex_to_int.c
 int		hex_to_int(const char *hex);

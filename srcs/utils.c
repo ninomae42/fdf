@@ -45,7 +45,7 @@ void	print_map(t_map *map)
 		while (x < map->width)
 		{
 			printf("i: %zu, j:%zu, ", x, y);
-			printf("x: %d, y: %d, z: %d, color: %d\n",
+			printf("x: %f, y: %f, z: %f, color: %d\n",
 				map->points[y][x].x,
 				map->points[y][x].y,
 				map->points[y][x].z,

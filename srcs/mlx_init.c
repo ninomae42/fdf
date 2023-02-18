@@ -38,9 +38,13 @@ static void	init_mlx_img(t_info *info)
 	info->img->win_height = info->win_height;
 }
 
+int	hook_mouse(int keysym, void *param);
+
 static void	register_hooks(t_info *info)
 {
 	mlx_hook(info->win_ptr, KeyPress, KeyPressMask, &hook_button, info);
 	mlx_hook(info->win_ptr, DestroyNotify, StructureNotifyMask, &hook_close_button, info);
+	mlx_hook(info->win_ptr, ButtonPress, ButtonPressMask, &hook_mouse, info);
+	// mlx_mouse_hook(info->win_ptr, &hook_mouse, info);
 	mlx_loop_hook(info->mlx_ptr, &hook_render, info);
 }
