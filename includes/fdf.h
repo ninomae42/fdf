@@ -36,6 +36,9 @@ void	*ft_malloc(size_t size);
 // hex_to_int.c
 int		hex_to_int(const char *hex);
 
+// map_read.c
+void	read_map(const char *file_name, t_map *map);
+
 // map_utils.c
 int		set_map_width_height(const char *file_name, t_map *map);
 size_t	get_map_index(t_map *map, size_t row_index, size_t col_index);

@@ -5,6 +5,7 @@ SRCS := main.c \
 		validator.c \
 		ft_syscall.c \
 		hex_to_int.c \
+		map_read.c \
 		map_utils.c \
 		ft_split_utils.c \
 
