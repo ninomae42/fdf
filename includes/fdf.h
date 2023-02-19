@@ -12,8 +12,8 @@
 bool	is_command_line_args_valid(int argc);
 
 // ft_syscall.c
-int		open_file(const char *file_name);
-void	*ft_malloc_exit(size_t size);
+int		open_file_by_name(const char *file_name);
+void	*ft_malloc(size_t size);
 
 // ft_split_utils.c
 size_t	ft_split_len(char **split);

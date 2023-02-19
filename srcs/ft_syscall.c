@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int	open_file(const char *file_name)
+int	open_file_by_name(const char *file_name)
 {
 	int	fd;
 
@@ -14,7 +14,7 @@ int	open_file(const char *file_name)
 	return (fd);
 }
 
-void	*ft_malloc_exit(size_t size)
+void	*ft_malloc(size_t size)
 {
 	void	*ret;
 
