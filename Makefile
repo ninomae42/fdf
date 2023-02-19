@@ -32,7 +32,7 @@ INCLUDES := $(addprefix -I, $(INC_DIR))
 
 # Command settings
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined
 MAKE := make
 RM := rm -rf
 
