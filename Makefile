@@ -4,6 +4,7 @@ NAME := fdf
 SRCS := main.c \
 		validator.c \
 		ft_syscall.c \
+		hex_to_int.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs
