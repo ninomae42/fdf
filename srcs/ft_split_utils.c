@@ -7,9 +7,7 @@ char	**ft_split_safe(char *s, char c)
 	ret = ft_split(s, c);
 	if (ret == NULL)
 	{
-		perror("fdf");
-		ft_putendl_fd("[Error]: Unable to allocate memory", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		ft_fatal(ERR_MEM);
 	}
 	return (ret);
 }

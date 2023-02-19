@@ -11,6 +11,10 @@
 # include <unistd.h>
 # include "libft.h"
 
+# define ERR_ARGC "[Error] Invalid argc. argc must be 2"
+# define ERR_MEM "[Error] Unable to allocate memory"
+# define ERR_OPEN "[Error] Unable to open file"
+
 typedef struct s_point
 {
 	double	x;
