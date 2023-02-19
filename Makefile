@@ -3,6 +3,7 @@ NAME := fdf
 # source file settings
 SRCS := main.c \
 		validator.c \
+		file.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs
