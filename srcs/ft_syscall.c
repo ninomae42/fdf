@@ -13,3 +13,17 @@ int	open_file(const char *file_name)
 	}
 	return (fd);
 }
+
+void	*ft_malloc_exit(size_t size)
+{
+	void	*ret;
+
+	ret = malloc(size);
+	if (ret == NULL)
+	{
+		perror("fdf");
+		ft_putendl_fd("[Error]: Unable to allocate memory", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	return (ret);
+}
