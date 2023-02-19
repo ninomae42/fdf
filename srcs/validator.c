@@ -7,6 +7,7 @@ static bool	is_argc_valid(int argc)
 	return (false);
 }
 
+// validate the commandline arguments
 bool	is_command_line_args_valid(int argc)
 {
 	if (!is_argc_valid(argc))

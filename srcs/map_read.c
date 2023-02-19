@@ -3,6 +3,7 @@
 static void	read_row(char *row, t_map *map, size_t cur_row);
 static void	read_point(char *point, t_map *map, size_t cur_row, size_t cur_col);
 
+// load map file into memory.
 void	read_map(const char *file_name, t_map *map)
 {
 	int		fd;

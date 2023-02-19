@@ -1,5 +1,7 @@
 #include "fdf.h"
 
+// find and set the map's width and height from the file.
+// on success returns 0, otherwise returns 1.
 int	set_map_width_height(const char *file_name, t_map *map)
 {
 	int		fd;
@@ -27,11 +29,13 @@ int	set_map_width_height(const char *file_name, t_map *map)
 	return (0);
 }
 
+// find the index of map's point based on current row and col index.
 size_t	get_map_index(t_map *map, size_t row_index, size_t col_index)
 {
 	return (row_index * map->cols + col_index);
 }
 
+// print the value stored on t_map struct. (deprecated)
 void	print_map(t_map *map)
 {
 	size_t	row_index;
