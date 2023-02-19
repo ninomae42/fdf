@@ -11,7 +11,7 @@
 // validator.c
 bool	is_command_line_args_valid(int argc);
 
-// file.c
+// ft_syscall.c
 int		open_file(const char *file_name);
 
 // ft_split_utils.c
