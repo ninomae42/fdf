@@ -9,6 +9,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include "libft.h"
 # include "mlx.h"
 
@@ -90,6 +92,10 @@ void	print_map(t_map *map);
 // mlx_init.c
 void	init_mlx(t_info *info);
 void	deallocate_mlx(t_mlx *mlx);
+
+// mlx_hook_events.c
+int		hook_button(int keysym, void *param);
+int		hook_close_button(void *param);
 
 // ft_split_utils.c
 char	**ft_split_safe(char *s, char c);

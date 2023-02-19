@@ -4,8 +4,9 @@ static void	init_mlx_image(t_mlx *mlx);
 
 void	register_mlx_hooks(t_info *info)
 {
-	(void)info;
 	// TODO: register hooks (render, keypress, mouse) to display isometric map properly.
+	mlx_hook(info->mlx->win_ptr, KeyPress, KeyPressMask, &hook_button, info);
+	mlx_hook(info->mlx->win_ptr, DestroyNotify, StructureNotifyMask, &hook_close_button, info);
 }
 
 void	init_mlx(t_info *info)
