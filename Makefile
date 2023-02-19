@@ -9,6 +9,7 @@ SRCS := main.c \
 		map_init.c \
 		map_read.c \
 		map_utils.c \
+		mlx_init.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs
