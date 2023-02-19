@@ -33,6 +33,9 @@ bool	is_command_line_args_valid(int argc);
 int		open_file_by_name(const char *file_name);
 void	*ft_malloc(size_t size);
 
+// ft_fatal.c
+void	ft_fatal(char *err_msg);
+
 // hex_to_int.c
 int		hex_to_int(const char *hex);
 
