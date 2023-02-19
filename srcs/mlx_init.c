@@ -45,5 +45,7 @@ static void	init_mlx_image(t_mlx *mlx)
 	img = (t_mlx_img *)ft_malloc(sizeof(t_mlx_img));
 	img->mlx_img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->line_len, &img->endian);
+	img->width = mlx->width;
+	img->height = mlx->height;
 	mlx->img = img;
 }
