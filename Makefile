@@ -2,12 +2,6 @@ NAME := fdf
 
 # source file settings
 SRCS := main.c \
-		cmdline_arguments.c \
-		map_init.c \
-		map_reader.c \
-		utils.c \
-		split_utils.c \
-		hex_to_int.c \
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./objs
