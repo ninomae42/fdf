@@ -10,4 +10,8 @@
 
 // validator.c
 bool	is_command_line_args_valid(int argc);
+// ft_split_utils.c
+size_t	ft_split_len(char **split);
+void	ft_split_free(char **split);
+
 #endif
