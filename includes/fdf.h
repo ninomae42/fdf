@@ -8,4 +8,6 @@
 # include <unistd.h>
 # include "libft.h"
 
+// validator.c
+bool	is_command_line_args_valid(int argc);
 #endif

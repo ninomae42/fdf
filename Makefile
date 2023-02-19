@@ -2,6 +2,7 @@ NAME := fdf
 
 # source file settings
 SRCS := main.c \
+		validator.c \
 
 SRCS_DIR := ./srcs
 OBJS_DIR := ./objs
