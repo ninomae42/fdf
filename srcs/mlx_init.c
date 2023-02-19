@@ -2,30 +2,27 @@
 
 static void	init_mlx_image(t_mlx *mlx);
 
-void	register_mlx_hooks(t_mlx *mlx, t_map *map)
+void	register_mlx_hooks(t_info *info)
 {
-	(void)mlx;
-	(void)map;
+	(void)info;
 	// TODO: register hooks (render, keypress, mouse) to display isometric map properly.
 }
 
-t_mlx	*init_mlx(t_map *map)
+void	init_mlx(t_info *info)
 {
-	t_mlx	*mlx;
-
-	mlx = (t_mlx *)ft_malloc(sizeof(t_mlx));
-	mlx->mlx_ptr = mlx_init();
-	if (mlx->mlx_ptr == NULL)
+	info->mlx = (t_mlx *)ft_malloc(sizeof(t_mlx));
+	info->mlx->mlx_ptr = mlx_init();
+	if (info->mlx->mlx_ptr == NULL)
 		ft_fatal(ERR_MLX_INIT);
-	mlx->width = DEFAULT_WIN_WIDTH;
-	mlx->height = DEFAULT_WIN_HEIGHT;
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "fdf");
-	if (mlx->mlx_ptr == NULL)
+	info->mlx->width = DEFAULT_WIN_WIDTH;
+	info->mlx->height = DEFAULT_WIN_HEIGHT;
+	info->mlx->win_ptr = mlx_new_window(
+			info->mlx->mlx_ptr, info->mlx->width, info->mlx->height, "fdf");
+	if (info->mlx->mlx_ptr == NULL)
 		ft_fatal(ERR_MLX_WINDOW);
-	init_mlx_image(mlx);
-	register_mlx_hooks(mlx, map);
-	mlx_loop(mlx->mlx_ptr);
-	return (mlx);
+	init_mlx_image(info->mlx);
+	register_mlx_hooks(info);
+	mlx_loop(info->mlx->mlx_ptr);
 }
 
 void	deallocate_mlx(t_mlx *mlx)

@@ -56,6 +56,12 @@ typedef struct s_minilibx
 	t_mlx_img	*img;
 }	t_mlx;
 
+typedef struct s_global_info
+{
+	t_map	*map;
+	t_mlx	*mlx;
+}	t_info;
+
 // validator.c
 bool	is_command_line_args_valid(int argc);
 
@@ -82,7 +88,7 @@ size_t	get_map_index(t_map *map, size_t row_index, size_t col_index);
 void	print_map(t_map *map);
 
 // mlx_init.c
-t_mlx	*init_mlx(t_map *map);
+void	init_mlx(t_info *info);
 void	deallocate_mlx(t_mlx *mlx);
 
 // ft_split_utils.c
