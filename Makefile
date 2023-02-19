@@ -3,8 +3,10 @@ NAME := fdf
 # source file settings
 SRCS := main.c \
 		validator.c \
+		ft_fatal.c \
 		ft_syscall.c \
 		hex_to_int.c \
+		map_init.c \
 		map_read.c \
 		map_utils.c \
 		ft_split_utils.c \

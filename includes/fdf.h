@@ -43,6 +43,10 @@ void	ft_fatal(char *err_msg);
 // hex_to_int.c
 int		hex_to_int(const char *hex);
 
+// map_init.c
+t_map	*init_map(char *file_name);
+void	deallocate_map(t_map *map);
+
 // map_read.c
 void	read_map(const char *file_name, t_map *map);
 
