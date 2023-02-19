@@ -11,6 +11,21 @@
 # include <unistd.h>
 # include "libft.h"
 
+typedef struct s_point
+{
+	double	x;
+	double	y;
+	double	z;
+	int		color;
+}	t_point;
+
+typedef struct s_map
+{
+	size_t	rows;
+	size_t	cols;
+	t_point	*points;
+}	t_map;
+
 // validator.c
 bool	is_command_line_args_valid(int argc);
 
@@ -23,6 +38,8 @@ int		hex_to_int(const char *hex);
 
 // map_utils.c
 int		set_map_width_height(const char *file_name, t_map *map);
+size_t	get_map_index(t_map *map, size_t row_index, size_t col_index);
+
 // ft_split_utils.c
 char	**ft_split_safe(char *s, char c);
 size_t	ft_split_len(char **split);

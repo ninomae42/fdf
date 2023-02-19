@@ -26,3 +26,8 @@ int	set_map_width_height(const char *file_name, t_map *map)
 	close(fd);
 	return (0);
 }
+
+size_t	get_map_index(t_map *map, size_t row_index, size_t col_index)
+{
+	return (row_index * map->cols + col_index);
+}
