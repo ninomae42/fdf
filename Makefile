@@ -11,6 +11,9 @@ SRCS := main.c \
 		map_utils.c \
 		mlx_init.c \
 		mlx_hook_events.c \
+		rotate.c \
+		rotate_point.c \
+		scale.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs

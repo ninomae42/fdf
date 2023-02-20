@@ -97,6 +97,20 @@ void	deallocate_mlx(t_mlx *mlx);
 int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
 
+// rotate.c
+void	rotate_x(t_map *map, double radian);
+void	rotate_y(t_map *map, double radian);
+void	rotate_z(t_map *map, double radian);
+
+// rotate_point.c
+void	rotate_point_xaxis(t_point *point, double radian);
+void	rotate_point_yaxis(t_point *point, double radian);
+void	rotate_point_zaxis(t_point *point, double radian);
+
+// translate_scale.c
+void	translate(t_map *map, double dx, double dy);
+void	scale(t_map *map, double scale);
+
 // ft_split_utils.c
 char	**ft_split_safe(char *s, char c);
 size_t	ft_split_len(char **split);
