@@ -1,13 +1,7 @@
 #include "fdf.h"
 
 static void	init_mlx_image(t_mlx *mlx);
-
-void	register_mlx_hooks(t_info *info)
-{
-	// TODO: register hooks (render, keypress, mouse) to display isometric map properly.
-	mlx_hook(info->mlx->win_ptr, KeyPress, KeyPressMask, &hook_button, info);
-	mlx_hook(info->mlx->win_ptr, DestroyNotify, StructureNotifyMask, &hook_close_button, info);
-}
+static void	register_mlx_hooks(t_info *info);
 
 void	init_mlx(t_info *info)
 {
@@ -22,6 +16,20 @@ void	init_mlx(t_info *info)
 	if (info->mlx->mlx_ptr == NULL)
 		ft_fatal(ERR_MLX_WINDOW);
 	init_mlx_image(info->mlx);
+
+	scale(info->map, 20);
+	puts("scale");
+	print_map(info->map);
+
+	rotate_z(info->map, M_PI_4);
+	rotate_x(info->map, atan(sqrt(2)));
+	puts("rotate");
+	print_map(info->map);
+
+	translate(info->map, 200, 200);
+	puts("translate");
+	print_map(info->map);
+
 	register_mlx_hooks(info);
 	mlx_loop(info->mlx->mlx_ptr);
 }
@@ -34,6 +42,13 @@ void	deallocate_mlx(t_mlx *mlx)
 	mlx->win_ptr = NULL;
 	mlx_destroy_display(mlx->mlx_ptr);
 	free(mlx);
+}
+
+static void	register_mlx_hooks(t_info *info)
+{
+	mlx_hook(info->mlx->win_ptr, KeyPress, KeyPressMask, &hook_button, info);
+	mlx_hook(info->mlx->win_ptr, DestroyNotify, StructureNotifyMask, &hook_close_button, info);
+	mlx_loop_hook(info->mlx->mlx_ptr, &hook_render, info);
 }
 
 static void	init_mlx_image(t_mlx *mlx)
