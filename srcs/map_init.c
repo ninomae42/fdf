@@ -16,6 +16,21 @@ t_map	*init_map(char *file_name)
 	return (map);
 }
 
+// copy map struct.
+t_map	*copy_map(t_map *map)
+{
+	t_map	*map_new;
+
+	map_new = ft_malloc(sizeof(t_map));
+	ft_bzero(map_new, sizeof(t_map));
+	map_new->rows = map->rows;
+	map_new->cols = map->cols;
+	map_new->points = (t_point *)ft_malloc(sizeof(t_point) * map->cols * map->rows);
+	ft_memcpy(map_new->points, map->points,
+			sizeof(t_point) * map->cols * map->rows);
+	return (map_new);
+}
+
 // deallocate map struct.
 void	deallocate_map(t_map *map)
 {

@@ -7,6 +7,8 @@ int	main(int argc, char *argv[])
 	if (!is_command_line_args_valid(argc))
 		exit(EXIT_FAILURE);
 	info.map = init_map(argv[1]);
+	info.draw_map = copy_map(info.map);
+	info.state = state_init();
 	init_mlx(&info);
 	exit(EXIT_SUCCESS);
 }

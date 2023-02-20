@@ -68,6 +68,20 @@ typedef enum e_rotate_axis
 	Z = 2,
 }	t_rot_axis;
 
+typedef struct s_state
+{
+	double	trans_x;
+	double	trans_y;
+	double	trans_z;
+	double	scale_x;
+	double	scale_y;
+	double	scale_z;
+	double	theta_x;
+	double	theta_y;
+	double	theta_z;
+	double	zoom_rate;
+}	t_state;
+
 typedef struct s_minilibx_image
 {
 	void	*mlx_img;
@@ -91,6 +105,8 @@ typedef struct s_minilibx
 typedef struct s_global_info
 {
 	t_map	*map;
+	t_map	*draw_map;
+	t_state	*state;
 	t_mlx	*mlx;
 }	t_info;
 
@@ -109,6 +125,7 @@ int		hex_to_int(const char *hex);
 
 // map_init.c
 t_map	*init_map(char *file_name);
+t_map	*copy_map(t_map *map);
 void	deallocate_map(t_map *map);
 
 // map_read.c
@@ -118,6 +135,10 @@ void	read_map(const char *file_name, t_map *map);
 int		set_map_width_height(const char *file_name, t_map *map);
 size_t	get_map_index(t_map *map, size_t row_index, size_t col_index);
 void	print_map(t_map *map);
+
+// state_init.c
+t_state	*state_init(void);
+void	state_deallocate(t_state *state);
 
 // mlx_init.c
 void	init_mlx(t_info *info);
