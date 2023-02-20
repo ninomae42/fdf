@@ -61,6 +61,13 @@ typedef struct s_matrices
 	t_matrix	**data;
 }	t_matrices;
 
+typedef enum e_rotate_axis
+{
+	X = 0,
+	Y = 1,
+	Z = 2,
+}	t_rot_axis;
+
 typedef struct s_minilibx_image
 {
 	void	*mlx_img;
@@ -153,6 +160,12 @@ t_matrix	*matrix_new_unit_matrix(size_t size_row, size_t size_col);
 void		matrix_deallocate(t_matrix *matrix);
 void		matrix_print(t_matrix *matrix);
 
+// matrix_affine_scale_trans.c
+t_matrix	*affine_new_scale_matrix(double sx, double sy, double sz);
+t_matrix	*affine_new_translate_matrix(double tx, double ty, double tz);
+
+// matrix_affine_rotate.c
+t_matrix	*affine_new_rotate_matrix(t_rot_axis axis, double radian);
 
 // matrix_multiply.c
 t_matrix	*matrix_multiply(t_matrix *matrix_a, t_matrix *matrix_b);
@@ -164,5 +177,9 @@ void		matrices_to_map(t_matrices *matrices, t_map *map);
 
 // matrix_multiply.c
 t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b);
+
+// matrix_affine_apply.c
+void		apply_affine_to_matrices(t_matrix *affine, t_matrices *matrices);
+t_matrix	*combine_affine_matrix(t_matrix *affine_prev, t_matrix *affine_next);
 
 #endif
