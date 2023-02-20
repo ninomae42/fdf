@@ -15,7 +15,14 @@ SRCS := main.c \
 		draw_line.c \
 		rotate.c \
 		rotate_point.c \
-		scale.c \
+		translate_scale.c \
+		isometric.c \
+		matrix_affine_apply.c \
+		matrix_affine_rotate.c \
+		matrix_affine_scale_trans.c \
+		matrix_init.c \
+		matrix_interface.c \
+		matrix_multiply.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs
