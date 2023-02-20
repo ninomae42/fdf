@@ -182,4 +182,7 @@ t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b);
 void		apply_affine_to_matrices(t_matrix *affine, t_matrices *matrices);
 t_matrix	*combine_affine_matrix(t_matrix *affine_prev, t_matrix *affine_next);
 
+// isometric.c
+void	isometric_projection(t_map *map);
+
 #endif

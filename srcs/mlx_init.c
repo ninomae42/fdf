@@ -16,20 +16,7 @@ void	init_mlx(t_info *info)
 	if (info->mlx->mlx_ptr == NULL)
 		ft_fatal(ERR_MLX_WINDOW);
 	init_mlx_image(info->mlx);
-
-	scale(info->map, 20);
-	puts("scale");
-	print_map(info->map);
-
-	rotate_z(info->map, M_PI_4);
-	rotate_x(info->map, atan(sqrt(2)));
-	puts("rotate");
-	print_map(info->map);
-
-	translate(info->map, 200, 200);
-	puts("translate");
-	print_map(info->map);
-
+	isometric_projection(info->map);
 	register_mlx_hooks(info);
 	mlx_loop(info->mlx->mlx_ptr);
 }
