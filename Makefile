@@ -23,6 +23,7 @@ SRCS := main.c \
 		matrix_init.c \
 		matrix_interface.c \
 		matrix_multiply.c \
+		state_init.c \
 		ft_split_utils.c \
 
 SRCS_DIR := ./srcs
