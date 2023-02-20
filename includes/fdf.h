@@ -54,6 +54,13 @@ typedef struct s_matrix
 	double	*data;
 }	t_matrix;
 
+typedef struct s_matrices
+{
+	size_t		row;
+	size_t		col;
+	t_matrix	**data;
+}	t_matrices;
+
 typedef struct s_minilibx_image
 {
 	void	*mlx_img;
@@ -146,6 +153,14 @@ t_matrix	*matrix_new_unit_matrix(size_t size_row, size_t size_col);
 void		matrix_deallocate(t_matrix *matrix);
 void		matrix_print(t_matrix *matrix);
 
+
+// matrix_multiply.c
+t_matrix	*matrix_multiply(t_matrix *matrix_a, t_matrix *matrix_b);
+
+// matrix_interface.c
+size_t		matrices_get_index(t_matrices *matrices, size_t cur_row, size_t cur_col);
+t_matrices	*map_to_matrices(t_map *map);
+void		matrices_to_map(t_matrices *matrices, t_map *map);
 
 // matrix_multiply.c
 t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b);
