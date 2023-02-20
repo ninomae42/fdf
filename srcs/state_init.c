@@ -7,8 +7,18 @@ t_state	*state_init(void)
 	t_state	*state;
 
 	state = state_new();
-	state->theta_z = M_PI_4;
 	state->theta_x = atan(sqrt(2.0));
+	state->theta_y = 0;
+	state->theta_z = M_PI_4;
+	state->scale_x = 2;
+	state->scale_y = 2;
+	state->scale_z = 2;
+	// state->scale_x = 10;
+	// state->scale_y = 10;
+	// state->scale_z = 10;
+	state->trans_x = 100;
+	state->trans_y = 100;
+	state->trans_z = 0;
 	return (state);
 }
 

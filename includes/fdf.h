@@ -140,6 +140,11 @@ void	print_map(t_map *map);
 t_state	*state_init(void);
 void	state_deallocate(t_state *state);
 
+// state_mutate.c
+void	state_set_translate(t_info *info, double tx, double ty);
+void	state_set_scale(t_info *info, double scale);
+void	state_set_rotate(t_info *info, t_rot_axis axis, double radian);
+
 // mlx_init.c
 void	init_mlx(t_info *info);
 void	deallocate_mlx(t_mlx *mlx);
