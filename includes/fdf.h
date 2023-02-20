@@ -38,6 +38,15 @@ typedef struct s_map
 	t_point	*points;
 }	t_map;
 
+typedef struct s_plot
+{
+	int		dx;
+	int		dy;
+	int		steps;
+	double	x_inc;
+	double	y_inc;
+}	t_plot;
+
 typedef struct s_minilibx_image
 {
 	void	*mlx_img;
@@ -96,6 +105,10 @@ void	deallocate_mlx(t_mlx *mlx);
 // mlx_hook_events.c
 int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
+
+// draw_line.c
+void	draw_line(t_mlx_img *img, t_point p1, t_point p2);
+void	clear_window(t_info *info);
 
 // rotate.c
 void	rotate_x(t_map *map, double radian);
