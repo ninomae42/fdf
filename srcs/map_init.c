@@ -8,11 +8,9 @@ t_map	*init_map(char *file_name)
 	map = ft_malloc(sizeof(t_map));
 	ft_bzero(map, sizeof(t_map));
 	set_map_width_height(file_name, map);
-	printf("row: %zu, col: %zu\n", map->rows, map->cols);
 	map->points = (t_point *)ft_malloc(sizeof(t_point) * (map->rows * map->cols));
 	ft_bzero(map->points, (sizeof(t_point) * (map->rows * map->cols)));
 	read_map(file_name, map);
-	print_map(map);
 	return (map);
 }
 
@@ -25,9 +23,9 @@ t_map	*copy_map(t_map *map)
 	ft_bzero(map_new, sizeof(t_map));
 	map_new->rows = map->rows;
 	map_new->cols = map->cols;
-	map_new->points = (t_point *)ft_malloc(sizeof(t_point) * map->cols * map->rows);
+	map_new->points = (t_point *)ft_malloc(sizeof(t_point) * (map_new->cols * map_new->rows));
 	ft_memcpy(map_new->points, map->points,
-			sizeof(t_point) * map->cols * map->rows);
+			(sizeof(t_point) * (map->cols * map->rows)));
 	return (map_new);
 }
 
