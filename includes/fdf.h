@@ -146,4 +146,8 @@ t_matrix	*matrix_new_unit_matrix(size_t size_row, size_t size_col);
 void		matrix_deallocate(t_matrix *matrix);
 void		matrix_print(t_matrix *matrix);
 
+
+// matrix_multiply.c
+t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b);
+
 #endif
