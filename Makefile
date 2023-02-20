@@ -11,6 +11,7 @@ SRCS := main.c \
 		map_utils.c \
 		mlx_init.c \
 		mlx_hook_events.c \
+		mlx_hook_render.c \
 		draw_line.c \
 		rotate.c \
 		rotate_point.c \

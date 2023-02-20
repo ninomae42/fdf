@@ -106,6 +106,9 @@ void	deallocate_mlx(t_mlx *mlx);
 int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
 
+// mlx_hook_render.c
+int		hook_render(void *param);
+
 // draw_line.c
 void	draw_line(t_mlx_img *img, t_point p1, t_point p2);
 void	clear_window(t_info *info);
