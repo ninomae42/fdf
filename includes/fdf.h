@@ -79,7 +79,6 @@ typedef struct s_state
 	double	theta_x;
 	double	theta_y;
 	double	theta_z;
-	double	zoom_rate;
 }	t_state;
 
 typedef struct s_minilibx_image
@@ -209,6 +208,6 @@ void		apply_affine_to_matrices(t_matrix *affine, t_matrices *matrices);
 t_matrix	*combine_affine_matrix(t_matrix *affine_prev, t_matrix *affine_next);
 
 // isometric.c
-void	isometric_projection(t_map *map);
+void	isometric_projection(t_info *info);
 
 #endif

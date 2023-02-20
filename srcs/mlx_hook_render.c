@@ -26,22 +26,21 @@ static void	render_map(t_info *info)
 	size_t	y;
 	t_point	*points;
 
-	points = info->map->points;
+	points = info->draw_map->points;
 	y = 0;
-	while (y < info->map->rows)
+	while (y < info->draw_map->rows)
 	{
 		x = 0;
-		while (x < info->map->cols)
+		while (x < info->draw_map->cols)
 		{
-			if (x != info->map->cols - 1)
-				draw_line(info->mlx->img, points[get_map_index(info->map, y, x)],
-						points[get_map_index(info->map, y, x + 1)]);
-			if (y != info->map->rows - 1)
-				draw_line(info->mlx->img, points[get_map_index(info->map, y, x)],
-						points[get_map_index(info->map, y + 1, x)]);
+			if (x != info->draw_map->cols - 1)
+				draw_line(info->mlx->img, points[get_map_index(info->draw_map, y, x)],
+						points[get_map_index(info->draw_map, y, x + 1)]);
+			if (y != info->draw_map->rows - 1)
+				draw_line(info->mlx->img, points[get_map_index(info->draw_map, y, x)],
+						points[get_map_index(info->draw_map, y + 1, x)]);
 			x++;
 		}
 		y++;
 	}
 }
-
