@@ -47,6 +47,13 @@ typedef struct s_plot
 	double	y_inc;
 }	t_plot;
 
+typedef struct s_matrix
+{
+	size_t	row;
+	size_t	col;
+	double	*data;
+}	t_matrix;
+
 typedef struct s_minilibx_image
 {
 	void	*mlx_img;
@@ -131,5 +138,12 @@ void	scale(t_map *map, double scale);
 char	**ft_split_safe(char *s, char c);
 size_t	ft_split_len(char **split);
 void	ft_split_free(char **split);
+
+// matrix_init.c
+size_t		matrix_get_index(t_matrix *matrix, size_t cur_row, size_t cur_col);
+t_matrix	*matrix_new(size_t size_row, size_t size_col);
+t_matrix	*matrix_new_unit_matrix(size_t size_row, size_t size_col);
+void		matrix_deallocate(t_matrix *matrix);
+void		matrix_print(t_matrix *matrix);
 
 #endif
