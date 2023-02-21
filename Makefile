@@ -16,9 +16,6 @@ SRCS := main.c \
 		draw_line.c \
 		draw_color.c \
 		draw_scale.c \
-		rotate.c \
-		rotate_point.c \
-		translate_scale.c \
 		isometric.c \
 		matrix_affine_apply.c \
 		matrix_affine_rotate.c \
