@@ -79,7 +79,7 @@ INC_DIR := ./includes $(LIBFT_INC_DIR) $(MINILIBX_INC_DIR) $(X_WINDOW_INC_DIR)
 INCLUDES := $(addprefix -I, $(INC_DIR))
 
 # Command settings
-CC := gcc
+CC := cc
 CFLAGS := -Wall -Wextra -Werror -O3
 # CFLAGS += -g -fsanitize=address -fsanitize=undefined
 MAKE := make
