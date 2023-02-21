@@ -29,6 +29,7 @@ void	deallocate_mlx(t_mlx *mlx)
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	mlx->win_ptr = NULL;
 	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
 	free(mlx);
 }
 
