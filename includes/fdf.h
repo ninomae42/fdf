@@ -172,6 +172,9 @@ void	clear_window(t_info *info);
 // draw_color.c
 int		get_gradation_color(int start, int end, double steps, double current);
 
+// draw_scale.c
+double		calculate_scale(t_info *info);
+
 // rotate.c
 void	rotate_x(t_map *map, double radian);
 void	rotate_y(t_map *map, double radian);

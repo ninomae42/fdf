@@ -16,6 +16,7 @@ void	init_mlx(t_info *info)
 	if (info->mlx->mlx_ptr == NULL)
 		ft_fatal(ERR_MLX_WINDOW);
 	init_mlx_image(info->mlx);
+	state_set_initial(info);
 	isometric_projection(info);
 	register_mlx_hooks(info);
 	mlx_loop(info->mlx->mlx_ptr);
