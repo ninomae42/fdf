@@ -1,7 +1,7 @@
 #include "fdf.h"
 
-static double	sum_elements(
-		t_matrix *mat_a, t_matrix *mat_b, size_t row_i, size_t col_i);
+static double	sum_elements(t_matrix *mat_a, t_matrix *mat_b,
+					size_t row_i, size_t col_i);
 
 t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b)
 {
@@ -16,8 +16,8 @@ t_matrix	*matrix_multiply(t_matrix *mat_a, t_matrix *mat_b)
 		col_i = 0;
 		while (col_i < mat_b->col)
 		{
-			result->data[matrix_get_index(result, row_i, col_i)] =
-				sum_elements(mat_a, mat_b, row_i, col_i);
+			result->data[matrix_get_index(result, row_i, col_i)]
+				= sum_elements(mat_a, mat_b, row_i, col_i);
 			col_i++;
 		}
 		row_i++;

@@ -36,25 +36,25 @@ size_t	get_map_index(t_map *map, size_t row_index, size_t col_index)
 }
 
 // print the value stored on t_map struct. (deprecated)
-void	print_map(t_map *map)
-{
-	size_t	row_index;
-	size_t	col_index;
-	size_t	map_index;
-	t_point	point;
-
-	row_index = 0;
-	while (row_index < map->rows)
-	{
-		col_index = 0;
-		while (col_index < map->cols)
-		{
-			map_index = get_map_index(map, row_index, col_index);
-			point = map->points[map_index];
-			printf("x: %f, y: %f, z: %f, color: %d\n",
-					point.x, point.y, point.z, point.color);
-			col_index++;
-		}
-		row_index++;
-	}
-}
+// void	print_map(t_map *map)
+// {
+// 	size_t	row_index;
+// 	size_t	col_index;
+// 	size_t	map_index;
+// 	t_point	point;
+//
+// 	row_index = 0;
+// 	while (row_index < map->rows)
+// 	{
+// 		col_index = 0;
+// 		while (col_index < map->cols)
+// 		{
+// 			map_index = get_map_index(map, row_index, col_index);
+// 			point = map->points[map_index];
+// 			printf("x: %f, y: %f, z: %f, color: %d\n",
+// 				point.x, point.y, point.z, point.color);
+// 			col_index++;
+// 		}
+// 		row_index++;
+// 	}
+// }

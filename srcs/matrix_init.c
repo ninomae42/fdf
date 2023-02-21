@@ -14,12 +14,14 @@ t_matrix	*matrix_new(size_t size_row, size_t size_col)
 }
 
 t_matrix	*matrix_new_unit_matrix(size_t size_row, size_t size_col)
-{	size_t		row_index;
+{
+	size_t		row_index;
 	size_t		col_index;
 	t_matrix	*matrix;
 
 	matrix = matrix_new(size_row, size_col);
-	row_index = 0; col_index = 0;
+	row_index = 0;
+	col_index = 0;
 	while (row_index < size_row)
 	{
 		matrix->data[matrix_get_index(matrix, row_index, col_index)] = 1;
@@ -42,21 +44,30 @@ void	matrix_deallocate(t_matrix *matrix)
 	free(matrix);
 }
 
-void	matrix_print(t_matrix *matrix)
+size_t	matrices_get_index(t_matrices *matrices, size_t cur_row, size_t cur_col)
 {
-	size_t	row_index;
-	size_t	col_index;
-
-	row_index = 0;
-	while (row_index < matrix->row)
-	{
-		col_index = 0;
-		while (col_index < matrix->col)
-		{
-			printf("%f ", matrix->data[matrix_get_index(matrix, row_index, col_index)]);
-			col_index++;
-		}
-		puts("");
-		row_index++;
-	}
+	if (matrices->row <= cur_row || matrices->col <= cur_col)
+		ft_fatal("matrices index out of range");
+	return (matrices->col * cur_row + cur_col);
 }
+
+//
+// void	matrix_print(t_matrix *matrix)
+// {
+// 	size_t	row_index;
+// 	size_t	col_index;
+//
+// 	row_index = 0;
+// 	while (row_index < matrix->row)
+// 	{
+// 		col_index = 0;
+// 		while (col_index < matrix->col)
+// 		{
+// 			printf("%f ",
+// 			matrix->data[matrix_get_index(matrix, row_index, col_index)]);
+// 			col_index++;
+// 		}
+// 		puts("");
+// 		row_index++;
+// 	}
+// }

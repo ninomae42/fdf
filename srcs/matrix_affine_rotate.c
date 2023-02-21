@@ -17,7 +17,7 @@ t_matrix	*affine_new_rotate_matrix(t_rot_axis axis, double radian)
 		affine_rotate_zaxis(matrix, radian);
 	else
 	{
-	 	matrix_deallocate(matrix);
+		matrix_deallocate(matrix);
 		return (NULL);
 	}
 	return (matrix);

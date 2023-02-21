@@ -35,7 +35,8 @@ void	deallocate_mlx(t_mlx *mlx)
 static void	register_mlx_hooks(t_info *info)
 {
 	mlx_hook(info->mlx->win_ptr, KeyPress, KeyPressMask, &hook_button, info);
-	mlx_hook(info->mlx->win_ptr, DestroyNotify, StructureNotifyMask, &hook_close_button, info);
+	mlx_hook(info->mlx->win_ptr,
+		DestroyNotify, StructureNotifyMask, &hook_close_button, info);
 	mlx_loop_hook(info->mlx->mlx_ptr, &hook_render, info);
 }
 
@@ -45,7 +46,8 @@ static void	init_mlx_image(t_mlx *mlx)
 
 	img = (t_mlx_img *)ft_malloc(sizeof(t_mlx_img));
 	img->mlx_img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
-	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp, &img->line_len, &img->endian);
+	img->addr = mlx_get_data_addr(
+			img->mlx_img, &img->bpp, &img->line_len, &img->endian);
 	img->width = mlx->width;
 	img->height = mlx->height;
 	mlx->img = img;

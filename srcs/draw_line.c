@@ -48,8 +48,8 @@ static void	plot_dot(t_mlx_img *img, t_plot *plot, double x, double y)
 	i = 0;
 	while (i < plot->steps)
 	{
-		img_pixel_put(img, x, y,
-				get_gradation_color(plot->start_color, plot->end_color, plot->steps, i));
+		img_pixel_put(img, x, y, get_gradation_color(plot->start_color,
+				plot->end_color, plot->steps, i));
 		x += plot->x_inc;
 		y += plot->y_inc;
 		i++;

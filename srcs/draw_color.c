@@ -12,7 +12,7 @@ static uint8_t	get_g(int color)
 
 static uint8_t	get_b(int color)
 {
-	return(color & 0xff);
+	return (color & 0xff);
 }
 
 static int	encode_rgb(uint8_t r, uint8_t g, uint8_t b)

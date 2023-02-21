@@ -14,10 +14,10 @@ int	hook_button(int keysym, void *param)
 	if (keysym == XK_w || keysym == XK_s || keysym == XK_a || keysym == XK_d)
 		set_keymap_translate(keysym, info);
 	if (keysym == XK_t || keysym == XK_r || keysym == XK_g || keysym == XK_f
-			|| keysym == XK_b || keysym == XK_v)
+		|| keysym == XK_b || keysym == XK_v)
 		set_keymap_rotate(keysym, info);
 	if (keysym == XK_u || keysym == XK_y || keysym == XK_j || keysym == XK_h
-			|| keysym == XK_m || keysym == XK_n)
+		|| keysym == XK_m || keysym == XK_n)
 		set_keymap_scale(keysym, info);
 	if (keysym == XK_x || keysym == XK_z)
 		set_keymap_zoom(keysym, info);
@@ -44,4 +44,3 @@ static void	handle_close(t_info *info)
 	state_deallocate(info->state);
 	exit(EXIT_SUCCESS);
 }
-

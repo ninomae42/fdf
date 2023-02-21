@@ -1,15 +1,8 @@
 #include "fdf.h"
 
 static t_matrix	*point_to_matrix(t_point *point);
-static void	matrix_to_point(t_matrix *matrix, t_point *point);
-static void	matrices_deallocate(t_matrices *matrices);
-
-size_t	matrices_get_index(t_matrices *matrices, size_t cur_row, size_t cur_col)
-{
-	if (matrices->row <= cur_row || matrices->col <= cur_col)
-		ft_fatal("matrices index out of range");
-	return (matrices->col * cur_row + cur_col);
-}
+static void		matrix_to_point(t_matrix *matrix, t_point *point);
+static void		matrices_deallocate(t_matrices *matrices);
 
 t_matrices	*map_to_matrices(t_map *map)
 {
@@ -17,18 +10,21 @@ t_matrices	*map_to_matrices(t_map *map)
 	size_t		row_i;
 	size_t		col_i;
 
-	matrices = (t_matrices *)ft_malloc(sizeof(t_matrices) * map->cols * map->rows);
+	matrices = (t_matrices *)ft_malloc(
+			sizeof(t_matrices) * map->cols * map->rows);
 	matrices->row = map->rows;
 	matrices->col = map->cols;
-	matrices->data = (t_matrix **)ft_malloc(sizeof(t_matrix *) * map->cols * map->rows);
+	matrices->data = (t_matrix **)ft_malloc(
+			sizeof(t_matrix *) * map->cols * map->rows);
 	row_i = 0;
 	while (row_i < map->rows)
 	{
 		col_i = 0;
 		while (col_i < map->cols)
 		{
-			matrices->data[matrices_get_index(matrices, row_i, col_i)] =
-				point_to_matrix(&map->points[get_map_index(map, row_i, col_i)]);
+			matrices->data[matrices_get_index(matrices, row_i, col_i)]
+				= point_to_matrix(
+					&map->points[get_map_index(map, row_i, col_i)]);
 			col_i++;
 		}
 		row_i++;
@@ -48,8 +44,8 @@ void	matrices_to_map(t_matrices *matrices, t_map *map)
 		while (col_i < matrices->col)
 		{
 			matrix_to_point(
-					matrices->data[matrices_get_index(matrices, row_i, col_i)],
-					&map->points[get_map_index(map, row_i, col_i)]);
+				matrices->data[matrices_get_index(matrices, row_i, col_i)],
+				&map->points[get_map_index(map, row_i, col_i)]);
 			col_i++;
 		}
 		row_i++;
@@ -82,4 +78,3 @@ static void	matrices_deallocate(t_matrices *matrices)
 	free(matrices->data);
 	free(matrices);
 }
-

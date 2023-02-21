@@ -17,7 +17,8 @@ int	hook_render(void *param)
 static void	render(t_info *info)
 {
 	render_map(info);
-	mlx_put_image_to_window(info->mlx->mlx_ptr, info->mlx->win_ptr, info->mlx->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(info->mlx->mlx_ptr, info->mlx->win_ptr,
+		info->mlx->img->mlx_img, 0, 0);
 }
 
 static void	render_map(t_info *info)
@@ -34,11 +35,13 @@ static void	render_map(t_info *info)
 		while (x < info->draw_map->cols)
 		{
 			if (x != info->draw_map->cols - 1)
-				draw_line(info->mlx->img, points[get_map_index(info->draw_map, y, x)],
-						points[get_map_index(info->draw_map, y, x + 1)]);
+				draw_line(info->mlx->img,
+					points[get_map_index(info->draw_map, y, x)],
+					points[get_map_index(info->draw_map, y, x + 1)]);
 			if (y != info->draw_map->rows - 1)
-				draw_line(info->mlx->img, points[get_map_index(info->draw_map, y, x)],
-						points[get_map_index(info->draw_map, y + 1, x)]);
+				draw_line(info->mlx->img,
+					points[get_map_index(info->draw_map, y, x)],
+					points[get_map_index(info->draw_map, y + 1, x)]);
 			x++;
 		}
 		y++;
