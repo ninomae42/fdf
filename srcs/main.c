@@ -12,3 +12,7 @@ int	main(int argc, char *argv[])
 	init_mlx(&info);
 	exit(EXIT_SUCCESS);
 }
+// __attribute__((destructor)) static void destructor()
+// {
+//     system("leaks -q fdf");
+// }
