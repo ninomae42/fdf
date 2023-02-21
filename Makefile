@@ -13,6 +13,7 @@ SRCS := main.c \
 		mlx_hook_events.c \
 		mlx_hook_render.c \
 		draw_line.c \
+		draw_color.c \
 		rotate.c \
 		rotate_point.c \
 		translate_scale.c \

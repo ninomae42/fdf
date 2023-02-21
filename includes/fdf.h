@@ -45,6 +45,8 @@ typedef struct s_plot
 	int		steps;
 	double	x_inc;
 	double	y_inc;
+	int		start_color;
+	int		end_color;
 }	t_plot;
 
 typedef struct s_matrix
@@ -158,6 +160,9 @@ int		hook_render(void *param);
 // draw_line.c
 void	draw_line(t_mlx_img *img, t_point p1, t_point p2);
 void	clear_window(t_info *info);
+
+// draw_color.c
+int		get_gradation_color(int start, int end, double steps, double current);
 
 // rotate.c
 void	rotate_x(t_map *map, double radian);

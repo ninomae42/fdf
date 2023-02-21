@@ -2,13 +2,11 @@
 
 static int	ft_abs(int n);
 static void	img_pixel_put(t_mlx_img *img, int x, int y, int color);
+static void	plot_dot(t_mlx_img *img, t_plot *plot, double x, double y);
 
 void	draw_line(t_mlx_img *img, t_point p1, t_point p2)
 {
 	t_plot	plot;
-	int		i;
-	double	x;
-	double	y;
 
 	plot.dx = p2.x - p1.x;
 	plot.dy = p2.y - p1.y;
@@ -18,16 +16,9 @@ void	draw_line(t_mlx_img *img, t_point p1, t_point p2)
 		plot.steps = ft_abs(plot.dy);
 	plot.x_inc = plot.dx / (double)plot.steps;
 	plot.y_inc = plot.dy / (double)plot.steps;
-	i = 0;
-	x = p1.x;
-	y = p1.y;
-	while (i < plot.steps)
-	{
-		img_pixel_put(img, x, y, 0xFFFFFF);
-		x += plot.x_inc;
-		y += plot.y_inc;
-		i++;
-	}
+	plot.start_color = p1.color;
+	plot.end_color = p2.color;
+	plot_dot(img, &plot, p1.x, p1.y);
 }
 
 void	clear_window(t_info *info)
@@ -47,6 +38,21 @@ void	clear_window(t_info *info)
 			x++;
 		}
 		y++;
+	}
+}
+
+static void	plot_dot(t_mlx_img *img, t_plot *plot, double x, double y)
+{
+	int	i;
+
+	i = 0;
+	while (i < plot->steps)
+	{
+		img_pixel_put(img, x, y,
+				get_gradation_color(plot->start_color, plot->end_color, plot->steps, i));
+		x += plot->x_inc;
+		y += plot->y_inc;
+		i++;
 	}
 }
 
