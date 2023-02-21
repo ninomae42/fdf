@@ -9,7 +9,6 @@ int	hook_button(int keysym, void *param)
 	info = (t_info *)param;
 	if (keysym == XK_Escape)
 		handle_close(info);
-	clear_window(info);
 	if (keysym == XK_i)
 		state_set_initial(info);
 	if (keysym == XK_w || keysym == XK_s || keysym == XK_a || keysym == XK_d)
@@ -22,6 +21,7 @@ int	hook_button(int keysym, void *param)
 		set_keymap_scale(keysym, info);
 	if (keysym == XK_x || keysym == XK_z)
 		set_keymap_zoom(keysym, info);
+	clear_window(info);
 	isometric_projection(info);
 	return (0);
 }
