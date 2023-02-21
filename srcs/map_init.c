@@ -1,79 +1,39 @@
 #include "fdf.h"
 
-static int	get_map_height_and_width(int fd, size_t *height, size_t *width);
-static int	get_map_metrics(t_info *info, char *file_name);
-static void	allocate_map_coordinates(t_info *info);
-
-void	initialize_map(t_info *info, char *file_name)
+// initialize map struct. load map file given by filename
+t_map	*init_map(char *file_name)
 {
-	info->map = ft_malloc_exit(sizeof(t_map));
-	if (get_map_metrics(info, file_name) != 0)
-	{
-		free(info->map);
-		free(info);
-		exit(EXIT_FAILURE);
-	}
-	allocate_map_coordinates(info);
-	read_map(file_name, info);
+	t_map	*map;
+
+	map = ft_malloc(sizeof(t_map));
+	ft_bzero(map, sizeof(t_map));
+	set_map_width_height(file_name, map);
+	map->points = (t_point *)ft_malloc(
+			sizeof(t_point) * (map->rows * map->cols));
+	ft_bzero(map->points, (sizeof(t_point) * (map->rows * map->cols)));
+	read_map(file_name, map);
+	return (map);
 }
 
-static int	get_map_metrics(t_info *info, char *file_name)
+// copy map struct.
+t_map	*copy_map(t_map *map)
 {
-	int		fd;
-	size_t	height;
-	size_t	width;
+	t_map	*map_new;
 
-	fd = open_file(file_name);
-	height = 0;
-	width = 0;
-	if (get_map_height_and_width(fd, &height, &width) != 0)
-	{
-		ft_puterr(ERR_MAP);
-		close(fd);
-		return (1);
-	}
-	info->map->height = height;
-	info->map->width = width;
-	close(fd);
-	return (0);
+	map_new = ft_malloc(sizeof(t_map));
+	ft_bzero(map_new, sizeof(t_map));
+	map_new->rows = map->rows;
+	map_new->cols = map->cols;
+	map_new->points = (t_point *)ft_malloc(
+			sizeof(t_point) * (map_new->cols * map_new->rows));
+	ft_memcpy(map_new->points, map->points,
+		(sizeof(t_point) * (map->cols * map->rows)));
+	return (map_new);
 }
 
-static void	allocate_map_coordinates(t_info *info)
+// deallocate map struct.
+void	deallocate_map(t_map *map)
 {
-	size_t	i;
-
-	info->map->coordinates = (t_coordinate **)ft_malloc_exit(
-			sizeof(t_coordinate *) * info->map->height);
-	i = 0;
-	while (i < info->map->height)
-	{
-		info->map->coordinates[i] = (t_coordinate *)ft_malloc_exit(
-				sizeof(t_coordinate) * info->map->width);
-		i++;
-	}
-}
-
-static int	get_map_height_and_width(int fd, size_t *height, size_t *width)
-{
-	char	*line;
-	char	**split;
-
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		split = ft_split_or_exit(line, ' ');
-		free(line);
-		line = NULL;
-		if (*height == 0)
-			*width = ft_split_len(split);
-		else if (*width != ft_split_len(split))
-		{
-			ft_split_free(split);
-			return (1);
-		}
-		ft_split_free(split);
-		(*height)++;
-		line = get_next_line(fd);
-	}
-	return (0);
+	free(map->points);
+	free(map);
 }
