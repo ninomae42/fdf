@@ -106,6 +106,8 @@ fclean: clean
 
 re: fclean all
 
+bonus: all
+
 $(MINILIBX):
 	$(MAKE) -C $(MINILIBX_DIR)
 
@@ -117,4 +119,4 @@ norm:
 	-@norminette srcs/ | grep -v "INVALID_HEADER"
 # -@norminette libft/ | grep -v "INVALID_HEADER"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
