@@ -13,9 +13,6 @@ t_state	*state_init(void)
 	state->scale_x = 2;
 	state->scale_y = 2;
 	state->scale_z = 2;
-	// state->scale_x = 10;
-	// state->scale_y = 10;
-	// state->scale_z = 10;
 	state->trans_x = 100;
 	state->trans_y = 100;
 	state->trans_z = 0;
