@@ -22,3 +22,19 @@ void	state_set_rotate(t_info *info, t_rot_axis axis, double radian)
 	if (axis == Z)
 		info->state->theta_z += radian;
 }
+
+void	state_set_initial(t_info *info)
+{
+	t_state	*state;
+
+	state = info->state;
+	state->theta_x = atan(sqrt(2.0));
+	state->theta_y = 0;
+	state->theta_z = M_PI_4;
+	state->scale_x = 2;
+	state->scale_y = 2;
+	state->scale_z = 2;
+	state->trans_x = 100;
+	state->trans_y = 100;
+	state->trans_z = 100;
+}

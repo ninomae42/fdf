@@ -10,6 +10,8 @@ int	hook_button(int keysym, void *param)
 	if (keysym == XK_Escape)
 		handle_close(info);
 	clear_window(info);
+	if (keysym == XK_i)
+		state_set_initial(info);
 	if (keysym == XK_w)
 		state_set_translate(info, 0, -10);
 	if (keysym == XK_s)
