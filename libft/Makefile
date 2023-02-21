@@ -6,7 +6,7 @@
 #    By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/27 17:01:32 by tashimiz          #+#    #+#              #
-#    Updated: 2023/02/22 00:52:57 by tashimiz         ###   ########.fr        #
+#    Updated: 2023/02/22 01:32:37 by tashimiz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ INCLUDES := $(addprefix -I, $(INC_DIR))
 DEPENDS := $(OBJS:.o=.d)
 
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -O3 -MP -MMD
+CFLAGS := -Wall -Wextra -Werror -MP -MMD
 
 AR := ar
 ARFLAGS := rcs
