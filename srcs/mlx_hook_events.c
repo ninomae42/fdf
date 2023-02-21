@@ -12,47 +12,16 @@ int	hook_button(int keysym, void *param)
 	clear_window(info);
 	if (keysym == XK_i)
 		state_set_initial(info);
-	if (keysym == XK_w)
-		state_set_translate(info, 0, -10);
-	if (keysym == XK_s)
-		state_set_translate(info, 0, 10);
-	if (keysym == XK_a)
-		state_set_translate(info, -10, 0);
-	if (keysym == XK_d)
-		state_set_translate(info, 10, 0);
-
-	if (keysym == XK_t)
-		state_set_rotate(info, Z, M_PI_2 / 10.0f);
-	if (keysym == XK_r)
-		state_set_rotate(info, Z, -(M_PI_2 / 10.0f));
-	if (keysym == XK_g)
-		state_set_rotate(info, Y, M_PI_2 / 10.0f);
-	if (keysym == XK_f)
-		state_set_rotate(info, Y, -(M_PI_2 / 10.0f));
-	if (keysym == XK_b)
-		state_set_rotate(info, X, M_PI_2 / 10.0f);
-	if (keysym == XK_v)
-		state_set_rotate(info, X, -(M_PI_2 / 10.0f));
-
-	if (keysym == XK_u)
-		state_set_scale_axis(info, Z, 1.5);
-	if (keysym == XK_y)
-		state_set_scale_axis(info, Z, -1.5);
-
-	if (keysym == XK_j)
-		state_set_scale_axis(info, Y, 1.05);
-	if (keysym == XK_h)
-		state_set_scale_axis(info, Y, -1.05);
-
-	if (keysym == XK_m)
-		state_set_scale_axis(info, X, 1.05);
-	if (keysym == XK_n)
-		state_set_scale_axis(info, X, -1.05);
-
-	if (keysym == XK_x)
-		state_set_scale(info, 1.05);
-	if (keysym == XK_z)
-		state_set_scale(info, -1.05);
+	if (keysym == XK_w || keysym == XK_s || keysym == XK_a || keysym == XK_d)
+		set_keymap_translate(keysym, info);
+	if (keysym == XK_t || keysym == XK_r || keysym == XK_g || keysym == XK_f
+			|| keysym == XK_b || keysym == XK_v)
+		set_keymap_rotate(keysym, info);
+	if (keysym == XK_u || keysym == XK_y || keysym == XK_j || keysym == XK_h
+			|| keysym == XK_m || keysym == XK_n)
+		set_keymap_scale(keysym, info);
+	if (keysym == XK_x || keysym == XK_z)
+		set_keymap_zoom(keysym, info);
 	isometric_projection(info);
 	return (0);
 }

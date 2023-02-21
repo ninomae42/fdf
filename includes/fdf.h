@@ -156,6 +156,12 @@ void	deallocate_mlx(t_mlx *mlx);
 int		hook_button(int keysym, void *param);
 int		hook_close_button(void *param);
 
+// mlx_hook_keymap.c
+void	set_keymap_translate(int keysym, t_info *info);
+void	set_keymap_rotate(int keysym, t_info *info);
+void	set_keymap_scale(int keysym, t_info *info);
+void	set_keymap_zoom(int keysym, t_info *info);
+
 // mlx_hook_render.c
 int		hook_render(void *param);
 

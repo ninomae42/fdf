@@ -12,6 +12,7 @@ SRCS := main.c \
 		mlx_init.c \
 		mlx_hook_events.c \
 		mlx_hook_render.c \
+		mlx_hook_keymap.c \
 		draw_line.c \
 		draw_color.c \
 		rotate.c \
