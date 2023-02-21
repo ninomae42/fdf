@@ -34,9 +34,9 @@ int	hook_button(int keysym, void *param)
 	if (keysym == XK_v)
 		state_set_rotate(info, X, -(M_PI_2 / 10.0f));
 	if (keysym == XK_x)
-		state_set_scale(info, 1.1);
+		state_set_scale(info, 1.05);
 	if (keysym == XK_z)
-		state_set_scale(info, -1.1);
+		state_set_scale(info, -1.05);
 	isometric_projection(info);
 	return (0);
 }
