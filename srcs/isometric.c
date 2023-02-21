@@ -7,7 +7,6 @@ void	isometric_projection(t_info *info)
 
 	matrices = map_to_matrices(info->map);
 	affine_matrix = matrix_new_unit_matrix(4, 4);
-
 	affine_matrix = combine_affine_matrix(affine_matrix,
 			affine_new_scale_matrix(
 				info->state->scale_x, info->state->scale_y, info->state->scale_z * 0.2));

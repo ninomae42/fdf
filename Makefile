@@ -15,6 +15,7 @@ SRCS := main.c \
 		mlx_hook_keymap.c \
 		draw_line.c \
 		draw_color.c \
+		draw_scale.c \
 		rotate.c \
 		rotate_point.c \
 		translate_scale.c \
