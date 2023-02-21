@@ -13,13 +13,23 @@ void	state_set_scale(t_info *info, double scale)
 	info->state->scale_z += scale;
 }
 
+void	state_set_scale_axis(t_info *info, t_rot_axis axis, double scale)
+{
+	if (axis == X)
+		info->state->scale_x += scale;
+	else if (axis == Y)
+		info->state->scale_y += scale;
+	else if (axis == Z)
+		info->state->scale_z += scale;
+}
+
 void	state_set_rotate(t_info *info, t_rot_axis axis, double radian)
 {
 	if (axis == X)
 		info->state->theta_x += radian;
-	if (axis == Y)
+	else if (axis == Y)
 		info->state->theta_y += radian;
-	if (axis == Z)
+	else if (axis == Z)
 		info->state->theta_z += radian;
 }
 

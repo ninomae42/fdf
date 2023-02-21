@@ -145,6 +145,7 @@ void	state_deallocate(t_state *state);
 void	state_set_initial(t_info *info);
 void	state_set_translate(t_info *info, double tx, double ty);
 void	state_set_scale(t_info *info, double scale);
+void	state_set_scale_axis(t_info *info, t_rot_axis axis, double scale);
 void	state_set_rotate(t_info *info, t_rot_axis axis, double radian);
 
 // mlx_init.c

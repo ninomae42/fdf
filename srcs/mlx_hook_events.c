@@ -33,6 +33,22 @@ int	hook_button(int keysym, void *param)
 		state_set_rotate(info, X, M_PI_2 / 10.0f);
 	if (keysym == XK_v)
 		state_set_rotate(info, X, -(M_PI_2 / 10.0f));
+
+	if (keysym == XK_u)
+		state_set_scale_axis(info, Z, 1.5);
+	if (keysym == XK_y)
+		state_set_scale_axis(info, Z, -1.5);
+
+	if (keysym == XK_j)
+		state_set_scale_axis(info, Y, 1.05);
+	if (keysym == XK_h)
+		state_set_scale_axis(info, Y, -1.05);
+
+	if (keysym == XK_m)
+		state_set_scale_axis(info, X, 1.05);
+	if (keysym == XK_n)
+		state_set_scale_axis(info, X, -1.05);
+
 	if (keysym == XK_x)
 		state_set_scale(info, 1.05);
 	if (keysym == XK_z)
