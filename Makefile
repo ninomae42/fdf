@@ -77,7 +77,7 @@ INCLUDES := $(addprefix -I, $(INC_DIR))
 
 # Command settings
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -O3
 CFLAGS += -g -fsanitize=address -fsanitize=undefined
 MAKE := make
 RM := rm -rf
