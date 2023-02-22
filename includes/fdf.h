@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:47:40 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 15:44:18 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:09:51 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "mlx.h"
 
 # define ERR_ARGC "[Error] Invalid argc. argc must be 2"
+# define ERR_EXTENSION "[Error] Invalid file extension. must be *.fdf"
 # define ERR_MAP "[Error] Empty map or column number not same"
 # define ERR_RANGE "[Error] Some map argument overflow"
 # define ERR_MEM "[Error] Unable to allocate memory"
@@ -127,7 +128,7 @@ typedef struct s_global_info
 }	t_info;
 
 // validator.c
-bool		is_command_line_args_valid(int argc);
+bool		is_command_line_args_valid(int argc, char **argv);
 
 // ft_syscall.c
 int			open_file_by_name(const char *file_name);
@@ -196,6 +197,7 @@ double		calculate_scale(t_info *info);
 char		**ft_split_safe(char *s, char c);
 size_t		ft_split_len(char **split);
 void		ft_split_free(char **split);
+size_t		ft_split_str_count(char **split, char *target);
 
 // matrix_init.c
 size_t		matrix_get_index(t_matrix *matrix, size_t cur_row, size_t cur_col);

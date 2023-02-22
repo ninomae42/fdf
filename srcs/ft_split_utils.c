@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:00 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 02:49:01 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:07:02 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,20 @@ void	ft_split_free(char **split)
 		i++;
 	}
 	free(split);
+}
+
+size_t	ft_split_str_count(char **split, char *target)
+{
+	size_t	i;
+	size_t	cnt;
+
+	cnt = 0;
+	i = 0;
+	while (split[i] != NULL)
+	{
+		if (ft_strncmp(split[i], target, ft_strlen(target)) == 0)
+			cnt++;
+		i++;
+	}
+	return (cnt);
 }
