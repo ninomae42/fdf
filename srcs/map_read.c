@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:37 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 17:30:49 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:38:36 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static int	read_row(char *row, t_map *map, size_t cur_row)
 	while (row_split[col_index])
 	{
 		if (read_point(row_split[col_index], map, cur_row, col_index) != 0)
+		{
+			ft_split_free(row_split);
 			return (1);
+		}
 		col_index++;
 	}
 	ft_split_free(row_split);
