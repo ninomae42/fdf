@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:43 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 02:49:44 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:18:34 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 // find and set the map's width and height from the file.
 // on success returns 0, otherwise returns 1.
-int	set_map_width_height(const char *file_name, t_map *map)
+int	set_map_width_height(int fd, t_map *map)
 {
-	int		fd;
 	char	*row;
 	char	**points;
 
-	fd = open_file_by_name(file_name);
 	row = get_next_line(fd);
+	if (row == NULL)
+		return (1);
 	while (row != NULL)
 	{
 		points = ft_split_safe(row, ' ');
@@ -37,7 +37,6 @@ int	set_map_width_height(const char *file_name, t_map *map)
 		row = get_next_line(fd);
 		map->rows++;
 	}
-	close(fd);
 	return (0);
 }
 
