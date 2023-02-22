@@ -146,10 +146,10 @@ t_map		*copy_map(t_map *map);
 void		deallocate_map(t_map *map);
 
 // map_read.c
-void		read_map(const char *file_name, t_map *map);
+int			read_map(const char *file_name, t_map *map);
 
 // map_utils.c
-int			set_map_width_height(const char *file_name, t_map *map);
+int			set_map_width_height(int fd, t_map *map);
 size_t		get_map_index(t_map *map, size_t row_index, size_t col_index);
 void		print_map(t_map *map);
 
