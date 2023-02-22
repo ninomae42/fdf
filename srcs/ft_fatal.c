@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:48:39 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 02:48:40 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:53:42 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 void	ft_fatal(char *err_msg)
 {
 	perror("fdf");
-	ft_putstr_fd(err_msg, STDERR_FILENO);
+	ft_putendl_fd(err_msg, STDERR_FILENO);
 	exit(EXIT_FAILURE);
+}
+
+void	ft_perror(char *err_msg)
+{
+	perror("fdf");
+	ft_putendl_fd(err_msg, STDERR_FILENO);
 }

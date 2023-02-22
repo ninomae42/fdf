@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:47:40 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 02:47:41 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:44:18 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include "mlx.h"
 
 # define ERR_ARGC "[Error] Invalid argc. argc must be 2"
+# define ERR_MAP "[Error] Empty map or column number not same"
+# define ERR_RANGE "[Error] Some map argument overflow"
 # define ERR_MEM "[Error] Unable to allocate memory"
 # define ERR_OPEN "[Error] Unable to open file"
 # define ERR_MLX_INIT "[Error] Unable to initialize minilibx"
@@ -133,6 +135,7 @@ void		*ft_malloc(size_t size);
 
 // ft_fatal.c
 void		ft_fatal(char *err_msg);
+void		ft_perror(char *err_msg);
 
 // hex_to_int.c
 int			hex_to_int(const char *hex);
