@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:14 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 02:49:15 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:42:37 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static char	*convert_to_lower_hex(const char *hex)
 
 	ret = ft_strdup(hex);
 	if (ret == NULL)
-	{
-		perror("fdf");
-		exit(EXIT_FAILURE);
-	}
+		ft_fatal(ERR_MEM);
 	i = 0;
 	while (ret[i] != '\0')
 	{
@@ -101,11 +98,10 @@ int	hex_to_int(const char *hex)
 	ret = do_conversion(hex_lower, &i, &is_err);
 	if (is_err == 1 || i != ft_strlen(hex))
 	{
+		free(hex_lower);
 		if (errno != ERANGE)
 			errno = EINVAL;
-		perror("fdf");
-		free(hex_lower);
-		exit(EXIT_FAILURE);
+		return (ret);
 	}
 	free(hex_lower);
 	return (ret);
