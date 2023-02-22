@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:47:56 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 14:26:01 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:21:33 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_info	info;
 
-	if (!is_command_line_args_valid(argc))
+	if (!is_command_line_args_valid(argc, argv))
 		exit(EXIT_FAILURE);
 	info.map = init_map(argv[1]);
 	if (info.map == NULL)
