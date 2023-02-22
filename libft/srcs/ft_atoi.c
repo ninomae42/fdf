@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:53:38 by tashimiz          #+#    #+#             */
-/*   Updated: 2022/11/25 19:04:15 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:43:27 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static int	is_overflow(long current, long sign, char next)
 {
 	if (0 < sign)
 	{
-		if (LONG_MAX / 10 < current)
+		if (INT_MAX / 10 < current)
 			return (1);
 		current = current * 10;
-		if ((LONG_MAX - current) < (next - '0'))
+		if ((INT_MAX - current) < (next - '0'))
 			return (1);
 	}
 	else
 	{
 		current = current * (-1);
-		if (current < (LONG_MIN / 10))
+		if (current < (INT_MIN / 10))
 			return (1);
 		current = current * 10;
-		if (-(next - '0') < (LONG_MIN - current))
+		if (-(next - '0') < (INT_MIN - current))
 			return (1);
 	}
 	return (0);
@@ -54,9 +54,9 @@ static long	do_conversion(const char *nptr, long sign, int *is_err)
 		{
 			*is_err = 1;
 			if (0 < sign)
-				return (LONG_MAX);
+				return (INT_MAX);
 			else
-				return (LONG_MIN);
+				return (INT_MIN);
 		}
 		ret = ret * 10 + (*nptr - '0');
 		nptr++;
