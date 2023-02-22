@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:43 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 14:18:34 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:27:10 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	set_map_width_height(int fd, t_map *map)
 {
 	char	*row;
 	char	**points;
+	bool	is_err;
 
 	row = get_next_line(fd);
+	is_err = false;
 	if (row == NULL)
-		return (1);
+		is_err = true;
 	while (row != NULL)
 	{
 		points = ft_split_safe(row, ' ');
@@ -29,14 +31,13 @@ int	set_map_width_height(int fd, t_map *map)
 		if (map->cols == 0)
 			map->cols = ft_split_len(points);
 		else if (map->cols != ft_split_len(points))
-		{
-			ft_split_free(points);
-			return (1);
-		}
+			is_err = true;
 		ft_split_free(points);
 		row = get_next_line(fd);
 		map->rows++;
 	}
+	if (is_err)
+		return (1);
 	return (0);
 }
 
