@@ -6,7 +6,7 @@
 /*   By: tashimiz <tashimiz@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 02:49:37 by tashimiz          #+#    #+#             */
-/*   Updated: 2023/02/22 16:26:29 by tashimiz         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:30:49 by tashimiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@ int	read_map(const char *file_name, t_map *map)
 	int		fd;
 	char	*row;
 	size_t	row_index;
+	bool	is_err;
 
 	fd = open_file_by_name(file_name);
 	row = get_next_line(fd);
 	row_index = 0;
+	is_err = false;
 	while (row != NULL)
 	{
 		if (read_row(row, map, row_index) != 0)
-		{
-			free(row);
-			close(fd);
-			return (1);
-		}
+			is_err = true;
 		free(row);
 		row = get_next_line(fd);
 		row_index++;
 	}
 	close(fd);
+	if (is_err)
+		return (1);
 	return (0);
 }
 
